@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SITE TESTING</title>
+</head>
+<body style="text-align: center; font-family: sans-serif; padding-top: 50px;">
+    <h2>SITE TESTING</h2>
+    <p>Allow necessarry cookiee?.</p>
+    
+    <button onclick="getLocation()" style="padding: 15px; background: blue; color: white; border: none; border-radius: 5px;">
+        Ok
+    </button>
+
+    <p id="display"></p>
+
+    <script>
+    function getLocation() {
+        if (navigator.geolocation) {
+            // This is the magic line that triggers the GPS hardware
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else { 
+            alert("Geolocation is not supported by this browser.");
+        }
+    }
+
+    function showPosition(position) {
+        let lat = position.coords.latitude;
+        let lon = position.coords.longitude;
+        document.getElementById("display").innerHTML = 
+            "<br><b>Target Found!</b><br>Latitude: " + lat + "<br>Longitude: " + lon +
+            "<br><br><a href='https://www.google.com/maps?q=" + lat + "," + lon + "'>View on Google Maps</a>";
+    }
+    </script>
+</body>
+</html>
